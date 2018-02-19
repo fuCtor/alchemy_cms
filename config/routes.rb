@@ -161,6 +161,7 @@ Alchemy::Engine.routes.draw do
   # The page show action has to be last route
   constraints(locale: Alchemy::RoutingConstraints::LOCALE_REGEXP) do
     get '(/:locale)/*urlname(.:format)' => 'pages#show',
+      defaults: {locale: 'ru'},
       constraints: Alchemy::RoutingConstraints.new,
       as: :show_page
   end

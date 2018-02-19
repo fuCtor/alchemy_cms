@@ -10,12 +10,16 @@ module Alchemy
     #
     # @returns String
     def convert_to_urlname(name)
-      name
+      Russian::transliterate(name
         .gsub(/[äÄ]/, 'ae')
         .gsub(/[üÜ]/, 'ue')
         .gsub(/[öÖ]/, 'oe')
-        .gsub(/[ß]/, 'ss')
-        .parameterize
+        .gsub(/[ß]/, 'ss'))
+        # .parameterize
+    end
+
+    def convert_to_urlname_param(name)
+      convert_to_urlname(name).parameterize
     end
 
     # Converts a filename and suffix into a human readable name.

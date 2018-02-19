@@ -99,7 +99,7 @@ module Alchemy
     # so it does not collidate with the language code.
     #
     def convert_url_name(value)
-      url_name = convert_to_urlname(value.blank? ? name : value)
+      url_name = value.blank? ? convert_to_urlname_param(name) : convert_to_urlname(value)
       if url_name.length < 3
         ('-' * (3 - url_name.length)) + url_name
       else
